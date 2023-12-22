@@ -11,5 +11,5 @@ In diesem Repository liegt eine funktionierende `docker-compose.yml` dabei.
 Man kann das Image auch selber bauen, wenn man möchte:
 
 ```bash
-docker build --no-cache --network=host --force-rm -t ghcr.io/schipplock/postgres-docker-image/postgres:v16.1.0 .
+docker build --no-cache --network=host --force-rm -t FROM ghcr.io/schipplock/postgres-docker-image:v16.1.0 .
 ```
