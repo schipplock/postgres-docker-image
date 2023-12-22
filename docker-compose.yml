@@ -1,0 +1,29 @@
+networks:
+  local-net:
+    name: local-net
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.1.0/24
+
+secrets:
+  postgres_password:
+    file: ./secrets/pw_postgres
+
+services:
+
+  db:
+    image: ghcr.io/schipplock/postgres-docker-image/postgres:v16.1
+    container_name: db
+    networks:
+      local-net:
+        aliases:
+          - db
+    ports:
+      - "5432:5432"
+    secrets:
+      - postgres_password
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: db
